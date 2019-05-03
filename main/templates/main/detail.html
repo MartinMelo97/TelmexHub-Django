@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Detalle</title>
+</head>
+<body>
+    <div>
+        <h1>Titulo: {{ movie.titulo }}</h1>
+        <h3>Director: {{ movie.director }}</h3>
+        <h5>Sinopsis: {{ movie.sinopsis }}</h5>
+        <p> Duración: {{ movie.duracion }}</p>
+        {% if movie.disponible  %}
+            <p>DISPONIBLE 🤓</p>
+        {% else %}
+            <p>NO DISPONIBLE 😩</p>
+        {% endif %}
+        <a href="/movies/edit/{{movie.id}}">Editar película</a>
+        <a href="/movies/delete/{{movie.id}}">Eliminar película</a>
+    </div>
+</body>
+</html>

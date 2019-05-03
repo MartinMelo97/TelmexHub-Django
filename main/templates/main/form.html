@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        {% if action == 'create' %}
+        <form action="/movies/add/" method="post">
+        {% else %}
+        <form action="/movies/edit/{{movie.id}}" method="post">
+        {% endif %}
+            {% csrf_token %}
+            <input 
+                type="text" 
+                name="titulo" 
+                placeholder="Titulo" 
+                value="{% if action == 'edit' %} {{ movie.titulo }} {% endif %}">
+            <input 
+                type="text" 
+                name="director" 
+                placeholder="Director"
+                value="{% if action == 'edit' %} {{ movie.director }} {% endif %}">
+
+            <input 
+                type="text" 
+                name="duracion" 
+                placeholder="Duración"
+                value="{% if action == 'edit' %} {{ movie.duracion }} {% endif %}">
+
+            <textarea 
+                name="sinopsis"
+                cols="30" 
+                rows="10"
+                placeholder="Sinopsis"
+                >{% if action == 'edit' %} {{ movie.sinopsis }} {% endif %}</textarea>
+            <input type="submit" value="{% if action == 'create' %}Crear pelicula {% else %} Editar pelicula {% endif%}">
+        </form>
+    </div>
+</body>
+</html>
